@@ -1,0 +1,17 @@
+import { create } from 'zustand';
+
+export const useCart = create((set) => ({
+  cart: [],
+  isOpen: false, // State ya modal
+  openCart: () => set({ isOpen: true }), // Action ya kufungua
+  closeCart: () => set({ isOpen: false }), // Action ya kufunga
+  
+  addToCart: (product) => set((state) => ({ 
+    cart: [...state.cart, product],
+    isOpen: true // Hapa ndipo uchawi ulipo: ikiongeza, modal inafunguka auto!
+  })),
+  
+  removeFromCart: (id) => set((state) => ({ 
+    cart: state.cart.filter((item) => item.id !== id) 
+  })),
+}));

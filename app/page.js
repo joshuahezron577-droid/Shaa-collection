@@ -1,32 +1,18 @@
-"use client"
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import HeroCarousel from '@/components/HeroCarousel';
+import ProductCard from '@/components/ProductCard';
+import { products } from '@/data/Product';
 
-   export default function App(){
-    return (
-      <>
-      <div className="text-cyan-600">
-            <h2>Starting point</h2>
+export default function HomePage() {
+  return (
+    <main className="p-8">
+      <HeroCarousel />
+      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+        {products.map((item) => (
+          // All from card
+          <ProductCard key={item.id} {...item} />
+        ))}
       </div>
-         <div className="card bg-base-100 w-96 shadow-sm">
-  <figure>
-    <img
-      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-      alt="Shoes" />
-  </figure>
-  <div className="card-body">
-    <h2 className="card-title">
-      Card Title
-      <div className="badge badge-secondary">NEW</div>
-    </h2>
-    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
-    <div className="card-actions justify-end">
-      <div className="badge badge-outline">Fashion</div>
-      <div className="badge badge-outline">Products</div>
-    </div>
-  </div>
-</div>
-      </>
-    )
-   }
-
+    </main>
+  );
+}
