@@ -1,17 +1,20 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
-export const useCart = create((set) => ({
+export const useCart = create(persist((set) => ({
   cart: [],
-  isOpen: false, // State ya modal
-  openCart: () => set({ isOpen: true }), // Action ya kufungua
-  closeCart: () => set({ isOpen: false }), // Action ya kufunga
+  isOpen: false,
+  
+  openCart: () => set({ isOpen: true }), 
+  closeCart: () => set({ isOpen: false }), 
   
   addToCart: (product) => set((state) => ({ 
-    cart: [...state.cart, product],
-    isOpen: true // Hapa ndipo uchawi ulipo: ikiongeza, modal inafunguka auto!
+    cart: [...state.cart, product] 
   })),
   
   removeFromCart: (id) => set((state) => ({ 
     cart: state.cart.filter((item) => item.id !== id) 
   })),
+}), {
+  name: 'cart-storage', // Jina la storage kwenye browser
 }));

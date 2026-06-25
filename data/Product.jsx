@@ -1,6 +1,6 @@
 // Main products
 export const products = [
-  { id: 1, title: "Shati ya Vitenge", price: "TZS 35,000", category: "men", image: "/images/men/shati-1.jpg" },
+  { id: 1, title: "Shati ya Vitenge", price: "TZS 35,000", category: "men", image: "/images/men/shati-1.jpg", description: "Design mpya kabisa."},
   { id: 2, title: "Gauni la Harusi", price: "TZS 120,000", category: "women", image: "/images/women/gauni-1.jpg" },
   { id: 3, title: "Wireless Earbuds", price: "TZS 45,000", category: "electronics", image: "/images/electronics/buds-1.jpg" },
   { id: 4, title: "Mkoba wa Ngozi", price: "TZS 25,000", category: "accessories", image: "/images/accessories/wallet-1.jpg" },
@@ -17,14 +17,16 @@ export const products = [
 // Women
 export const womenProducts = [
   { id: 100, title: "Gauni la Kisasa", price: "TZS 150,000", category: "women", image: "/images/women/gauni-2.jpg", description: "Design mpya kabisa." },
+  { id: 100, title: "Gauni la Kisasa", price: "TZS 150,000", category: "women", image: "/images/women/gauni-2.jpg", description: "Design mpya kabisa." },
+   { id: 100, title: "Gauni la Kisasa", price: "TZS 150,000", category: "women", image: "/images/women/gauni-2.jpg", description: "Design mpya kabisa." },
 ];
 //Men
 export const menProducts = [
   { id: 200, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
    { id: 201, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
 ];
-//Women
-export const electronicsProducts = [
+//Shoes
+export const shoesProducts = [
   { id: 300, title: "Headphones", price: "TZS 60,000", category: "electronics", image: "/images/electronics/phones.jpg", description: "Bass nzito sana." },
   { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
 ];
