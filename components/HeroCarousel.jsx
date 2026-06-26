@@ -1,69 +1,59 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
+
+const slides = [
+  { id: 1, src: '/Images/Herous/Slide-1.png' },
+  { id: 2, src: '/Images/Herous/Slide-2.png' },
+  { id: 3, src: '/Images/Herous/Slide-3.png' },
+];
 
 export default function HeroCarousel() {
-  const carouselRef = useRef(null);
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (carouselRef.current) {
-        const slides = carouselRef.current.querySelectorAll('.carousel-item');
-        const activeSlide = carouselRef.current.querySelector('.carousel-item.active') || slides[0];
-        let nextSlide = activeSlide.nextElementSibling || slides[0];
-        
-        nextSlide.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-        
-        slides.forEach(s => s.classList.remove('active'));
-        nextSlide.classList.add('active');
-      }
+      // Badilisha slide bila kusababisha page scroll
+      setCurrent((prev) => (prev + 1) % slides.length);
     }, 4000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="w-full px-4 py-4">
- <div 
-  ref={carouselRef} 
-  className="carousel w-full rounded-2xl shadow-xl overflow-hidden aspect-[16/9] md:aspect-[3/1]" 
->
-  {/* Slide 1 */}
-  <div 
-    id="slide-1" 
-    className="carousel-item relative w-full h-full"
-    style={{ 
-      backgroundImage: `url('Images/Herous/Slide-1.jpeg')`,
-      backgroundSize: '100% 100%', 
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}
-  ></div>
-  
-  {/* Slide 2 */}
-  <div 
-    id="slide-2" 
-    className="carousel-item relative w-full h-full"
-    style={{ 
-      backgroundImage: `url('Images/Herous/Slide-2.jpeg')`,
-      backgroundSize: '100% 100%', 
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}
-  ></div>
-  
-  {/* Slide 3 */}
-  <div 
-    id="slide-3" 
-    className="carousel-item relative w-full h-full"
-    style={{ 
-      backgroundImage: `url('Images/Herous/Slide-3.jpeg')`,
-      backgroundSize: '100% 100%', 
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }}
-  ></div>
-</div>
-    </section>
+    <div className="w-full overflow-hidden aspect-[16/9] md:aspect-[3/1] relative" style={{ margin: 0, padding: 0, display: 'block', lineHeight: 0 }}>
+      {/* Slides container — inahamia kwa CSS transform tu */}
+      <div
+        className="flex h-full transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {slides.map((slide) => (
+          <div
+            key={slide.id}
+            className="w-full h-full shrink-0"
+            style={{
+              backgroundImage: `url('${slide.src}')`,
+              backgroundSize: '100% 100%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Dots indicator */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              i === current ? 'bg-white w-5' : 'bg-white/50'
+            }`}
+            aria-label={`Slide ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

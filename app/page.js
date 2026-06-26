@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import HeroCarousel from '@/components/HeroCarousel';
 import ProductCard from '@/components/ProductCard';
-import CategoryNav from '@/components/CategoryNav';
 import { products } from '@/data/Product';
 
 function SearchContent() {
@@ -18,18 +17,17 @@ function SearchContent() {
   return (
     <>
       {!query && (
-        <>
-          <CategoryNav />
-          <div className="mt-6"><HeroCarousel /></div>
-        </>
+        <HeroCarousel />
       )}
-      
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((item) => <ProductCard key={item.id} {...item} />)
-        ) : (
-          <p className="col-span-full text-center text-gray-500 py-10">Hakuna bidhaa iliyopatikana.</p>
-        )}
+
+      <div className="px-4 md:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-10">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((item) => <ProductCard key={item.id} {...item} />)
+          ) : (
+            <p className="col-span-full text-center text-gray-500 py-10">Hakuna bidhaa iliyopatikana.</p>
+          )}
+        </div>
       </div>
     </>
   );
@@ -37,8 +35,8 @@ function SearchContent() {
 
 export default function HomePage() {
   return (
-    <main className="p-4 md:p-8">
-      <Suspense fallback={<div>Loading...</div>}>
+    <main className="w-full m-0 p-0">
+      <Suspense fallback={<div className="p-8">Loading...</div>}>
         <SearchContent />
       </Suspense>
     </main>

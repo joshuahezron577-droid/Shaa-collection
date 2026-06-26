@@ -1,8 +1,10 @@
-"use client"; // Kwa sababu tutakuwa na hover/click effects
-
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function CategoryNav() {
+  const pathname = usePathname();
+
   const categories = [
     { name: "Home", path: "/" },
     { name: "Children", path: "/children" },
@@ -12,13 +14,17 @@ export default function CategoryNav() {
   ];
 
   return (
-    <nav className="border-b border-gray-200 py-4 bg-white">
+    <nav className="border-b border-gray-200 py-3 bg-white">
       <div className="flex justify-center gap-8 md:gap-12">
         {categories.map((cat) => (
-          <Link 
-            key={cat.name} 
+          <Link
+            key={cat.name}
             href={cat.path}
-            className="text-sm md:text-base font-bold text-gray-700 hover:text-blue-900 transition-colors"
+            className={`text-sm md:text-base font-bold transition-all duration-150 underline-offset-4
+              ${pathname === cat.path
+                ? 'text-yellow-500 underline'
+                : 'text-gray-700 hover:text-yellow-500 hover:underline'
+              }`}
           >
             {cat.name}
           </Link>
