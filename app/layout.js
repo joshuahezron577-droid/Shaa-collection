@@ -9,7 +9,7 @@ import { FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaChevronRight, FaC
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col bg-gray-50">
+      <body className="min-h-screen flex flex-col bg-white">
         <Toaster
           position="top-center"
           toastOptions={{
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <CartModal />
 
-        <main className="flex-grow m-0 p-0">{children}</main>
+        <main className="flex-grow m-0 p-0 block">{children}</main>
 
         {/* ── FOOTER ───────────────────────────────────────── */}
         <footer className="bg-blue-950 text-white">

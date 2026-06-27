@@ -117,18 +117,19 @@ export default function Navbar() {
       {/* ══ CATEGORY PAGES — contacts + logo + search + cart ════════════ */}
       {!isHome && (
         <>
-          {/* Top bar na contacts */}
-          <div className="bg-blue-900 border-b border-blue-800 py-1.5 px-4">
-            <div className="container mx-auto flex items-center gap-6 text-xs text-blue-200">
+          {/* Top bar na contacts — same as home page */}
+          <div className="bg-blue-900 border-b border-blue-800 py-1.5 px-4 font-sans">
+            <div className="container mx-auto flex items-center justify-center gap-4 text-xs text-blue-200">
               <a href="tel:+255696408701"
-                className="flex items-center gap-1.5 hover:text-white transition-colors">
-                <FaPhoneAlt size={11} />
-                Need help? Call us:&nbsp;<span className="text-white font-semibold">0696 408 701</span>
+                className="flex items-center gap-1.5 hover:text-white transition-all duration-300">
+                <FaPhoneAlt size={12} />
+                <span className="text-white font-medium tracking-wide">+255 696 408 701</span>
               </a>
+              <span className="text-blue-700 font-light">|</span>
               <a href="https://wa.me/255773753292" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-white transition-colors">
+                className="flex items-center gap-1.5 hover:text-green-300 transition-all duration-300">
                 <IoLogoWhatsapp size={14} className="text-green-400" />
-                WhatsApp:&nbsp;<span className="text-white font-semibold">0773 753 292</span>
+                <span className="text-white font-medium tracking-wide">+255 773 753 292</span>
               </a>
             </div>
           </div>
@@ -181,7 +182,7 @@ export default function Navbar() {
 
       {/* ══ DESKTOP NAV BAR — home only ══════════════════ */}
       {isHome && (
-        <div className="hidden md:block border-t border-blue-800">
+        <div className="hidden md:block bg-blue-950">
           <div className="container mx-auto px-4 flex items-center justify-center">
             {navLinks.map((link) => (
               <Link key={link.name} href={link.path}
