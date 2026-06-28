@@ -47,13 +47,13 @@ export default function ProductCard({ id, title, price, category, image, descrip
       {/* ── Picha ─────────────────────────────────────── */}
       <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100">
         {image ? (
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover w-full h-full"
-            sizes="(max-width: 768px) 100vw, 25vw"
-          />
+         <Image
+     src={image}
+     alt={title}
+     fill
+     className="object-cover object-center w-full h-full" // Nimeongeza object-center
+     sizes="(max-width: 768px) 100vw, 25vw"
+/>
         ) : (
           <div className="w-full h-full bg-gray-200 flex items-center justify-center">
             <span className="text-gray-400 text-xs font-semibold">Hakuna Picha</span>
