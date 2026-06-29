@@ -4,15 +4,16 @@ import { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import HeroCarousel from '@/components/HeroCarousel';
+import ProductCarousel from '@/components/ProductCarousel'; // Hii ndio component uliyounda
 import ProductCard from '@/components/ProductCard';
 import { products } from '@/data/Product';
 
- const containerVariants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: { 
-      staggerChildren: 0.4, // Hii inafanya kadi ya pili isubiri 0.4s ndio ianze
+      staggerChildren: 0.4,
       delayChildren: 0.2     
     },
   },
@@ -29,10 +30,21 @@ function SearchContent() {
 
   return (
     <>
+      {/* 1. HeroCarousel inaonekana tu kama hakuna search */}
       {!query && <HeroCarousel />}
       
-      {/* Hapa ndipo tumebadilisha: mt-10 tumefanya mt-4 au mt-2 ili kubana nafasi */}
-      <div className="px-4 md:px-8 mt-2"> 
+      {/* 2. New Arrivals Carousel inaonekana tu kama hakuna search */}
+      {!query && <ProductCarousel products={products.slice(0, 5)} />} 
+      
+      {/* 3. Products Grid */}
+      <div className="px-4 md:px-8 mt-2">
+        {!query && (
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-1 h-6 bg-blue-950 rounded-full inline-block" />
+            <h2 className="text-xl font-black text-gray-900 tracking-tight">All Products</h2>
+          </div>
+        )}
+        
         <motion.div 
           variants={containerVariants}
           initial="hidden"

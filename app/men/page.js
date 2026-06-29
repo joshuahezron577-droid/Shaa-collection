@@ -3,12 +3,12 @@ import ProductCard from '@/components/ProductCard';
 
 export default function MenPage() {
   return (
-    <main className="container mx-auto p-4 md:p-8">
-      <div className="text-center mb-10">
-        <h1 className="text-3xl font-black text-blue-950 tracking-tight">Bidhaa za Wanaume</h1>
-        <div className="mx-auto mt-3 w-12 h-1 bg-blue-600 rounded-full" />
+    <main className="container mx-auto px-4 py-6">
+      <div className="flex items-center gap-2 mb-5">
+        <span className="w-1 h-6 bg-blue-950 rounded-full inline-block" />
+        <h1 className="text-xl font-black text-gray-900 tracking-tight">Bidhaa za Wanaume</h1>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
         {menProducts.length > 0 ? (
           menProducts.map((item) => <ProductCard key={item.id} {...item} />)
         ) : (

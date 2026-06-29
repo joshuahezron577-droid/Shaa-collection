@@ -25,6 +25,7 @@ export default function Navbar() {
   const cart      = useCart((state) => state.cart);
   const openCart  = useCart((state) => state.openCart);
   const cartCount = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  const isHome    = pathname === '/';
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -32,155 +33,75 @@ export default function Navbar() {
     setDrawerOpen(false);
   };
 
-  // Kama si home page — ficha top bar, search, cart
-  const isHome = pathname === '/';
-
   return (
     <nav className="w-full bg-blue-950 sticky top-0 z-50 shadow-sm">
 
-      {/* ══ TOP BAR — home page only ═════════════════════ */}
-      {isHome && (
-        <div className="bg-blue-900 border-b border-blue-800 py-1.5 px-4 font-sans">
-  <div className="container mx-auto flex items-center justify-center gap-4 text-xs text-blue-200">
-    
-    {/* Phone */}
-    <a href="tel:+255696408701" 
-       className="flex items-center gap-1.5 hover:text-white transition-all duration-300">
-       <FaPhoneAlt size={12} />
-       <span className="text-white font-medium tracking-wide">+255 696 408 701</span>
-    </a>
-
-    {/* Divider | */}
-    <span className="text-blue-700 font-light">|</span>
-
-    {/* WhatsApp */}
-    <a href="https://wa.me/255773753292" target="_blank" rel="noopener noreferrer"
-       className="flex items-center gap-1.5 hover:text-green-300 transition-all duration-300">
-       <IoLogoWhatsapp size={14} className="text-green-400" />
-       <span className="text-white font-medium tracking-wide">+255 773 753 292</span>
-    </a>
-    
-  </div>
-</div>
-      
-      )}
-
-      {/* ══ MAIN HEADER — home page only ════════════════ */}
-      {isHome && (
-        <div className="container mx-auto flex items-center justify-between py-3 px-4 gap-4">
-          {/* Logo */}
-          <Link href="/"
-            className="shrink-0 text-xl md:text-2xl font-black text-white tracking-tight hover:text-yellow-400 transition-colors">
-            SHOP-TZ
-          </Link>
-
-          {/* Search bar */}
-          <form onSubmit={handleSearch}
-            className="flex flex-1 max-w-2xl items-stretch rounded-md overflow-hidden shadow-sm">
-            <input
-              type="text"
-              placeholder="Tafuta bidhaa hapa..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="flex-1 text-sm py-2.5 px-4 outline-none bg-white text-gray-800 placeholder-gray-400"
-            />
-            <button type="submit"
-              className="bg-yellow-400 hover:bg-yellow-500 transition-colors px-4 flex items-center justify-center shrink-0"
-              aria-label="Search">
-              <FiSearch size={18} className="text-blue-950" />
-            </button>
-          </form>
-
-          {/* Cart */}
-          <button onClick={openCart}
-            className="shrink-0 relative flex flex-col items-center text-white hover:text-yellow-400 transition-colors p-1"
-            aria-label="Cart">
-            <LuShoppingCart size={26} />
-            {cartCount > 0 && (
-              <span className="absolute -top-1 -right-2 bg-yellow-400 text-blue-950 text-[10px] font-black min-w-[18px] h-[18px] flex items-center justify-center rounded-full px-1 leading-none">
-                {cartCount}
-              </span>
-            )}
-            <span className="text-[10px] font-bold mt-0.5 hidden md:block">Cart</span>
-          </button>
-
-          {/* Hamburger mobile */}
-          <button
-            onClick={() => setDrawerOpen(!drawerOpen)}
-            className="md:hidden shrink-0 text-white hover:text-yellow-400 transition-colors p-1"
-            aria-label="Toggle menu">
-            {drawerOpen ? <LuX size={24} /> : <LuMenu size={24} />}
-          </button>
+      {/* ══ TOP BAR — desktop only ═══════════════════════ */}
+      <div className="hidden md:flex bg-blue-900 border-b border-blue-800 py-1.5 px-4">
+        <div className="container mx-auto flex items-center justify-center gap-4 text-xs">
+          <a href="tel:+255696408701"
+            className="flex items-center gap-1.5 text-white font-medium hover:text-yellow-400 transition-colors">
+            <FaPhoneAlt size={11} />
+            Need help? Call us: +255 696 408 701
+          </a>
+          <span className="text-blue-700">|</span>
+          <a href="https://wa.me/255773753292" target="_blank" rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-white font-medium hover:text-green-300 transition-colors">
+            <IoLogoWhatsapp size={13} className="text-green-400" />
+            +255 773 753 292
+          </a>
         </div>
-      )}
+      </div>
 
-      {/* ══ CATEGORY PAGES — contacts + logo + search + cart ════════════ */}
-      {!isHome && (
-        <>
-          {/* Top bar na contacts — same as home page */}
-          <div className="bg-blue-900 border-b border-blue-800 py-1.5 px-4 font-sans">
-            <div className="container mx-auto flex items-center justify-center gap-4 text-xs text-blue-200">
-              <a href="tel:+255696408701"
-                className="flex items-center gap-1.5 hover:text-white transition-all duration-300">
-                <FaPhoneAlt size={12} />
-                <span className="text-white font-medium tracking-wide">+255 696 408 701</span>
-              </a>
-              <span className="text-blue-700 font-light">|</span>
-              <a href="https://wa.me/255773753292" target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-green-300 transition-all duration-300">
-                <IoLogoWhatsapp size={14} className="text-green-400" />
-                <span className="text-white font-medium tracking-wide">+255 773 753 292</span>
-              </a>
-            </div>
-          </div>
+      {/* ══ MAIN HEADER — ALL PAGES ══════════════════════ */}
+      <div className="container mx-auto flex items-center justify-between py-3 px-4 gap-4">
 
-          {/* Logo + Search + Cart */}
-          <div className="container mx-auto flex items-center justify-between py-3 px-4 gap-4">
-            <Link href="/"
-              className="shrink-0 text-xl md:text-2xl font-black text-white tracking-tight hover:text-yellow-400 transition-colors">
-              SHOP-TZ
-            </Link>
+        {/* Logo */}
+        <Link href="/"
+          className="shrink-0 text-xl md:text-2xl font-black text-white tracking-tight hover:text-yellow-400 transition-colors">
+          SHOP-TZ
+        </Link>
 
-            <form onSubmit={handleSearch}
-              className="flex flex-1 max-w-2xl items-stretch rounded-md overflow-hidden shadow-sm">
-              <input
-                type="text"
-                placeholder="Tafuta bidhaa hapa..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="flex-1 text-sm py-2.5 px-4 outline-none bg-white text-gray-800 placeholder-gray-400"
-              />
-              <button type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 transition-colors px-4 flex items-center justify-center shrink-0"
-                aria-label="Search">
-                <FiSearch size={18} className="text-blue-950" />
-              </button>
-            </form>
+        {/* Search bar */}
+        <form onSubmit={handleSearch}
+          className="flex flex-1 max-w-2xl items-stretch rounded-md overflow-hidden shadow-sm">
+          <input
+            type="text"
+            placeholder="Tafuta bidhaa hapa..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="flex-1 text-sm py-2.5 px-4 outline-none bg-white text-gray-800 placeholder-gray-400"
+          />
+          <button type="submit"
+            className="bg-yellow-400 hover:bg-yellow-500 transition-colors px-4 flex items-center justify-center shrink-0"
+            aria-label="Search">
+            <FiSearch size={18} className="text-blue-950" />
+          </button>
+        </form>
 
-            <button onClick={openCart}
-              className="shrink-0 relative flex flex-col items-center text-white hover:text-yellow-400 transition-colors p-1"
-              aria-label="Cart">
-              <LuShoppingCart size={26} />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-2 bg-yellow-400 text-blue-950 text-[10px] font-black min-w-[18px] h-[18px] flex items-center justify-center rounded-full px-1 leading-none">
-                  {cartCount}
-                </span>
-              )}
-              <span className="text-[10px] font-bold mt-0.5 hidden md:block">Cart</span>
-            </button>
+        {/* Cart */}
+        <button onClick={openCart}
+          className="shrink-0 relative flex flex-col items-center text-white hover:text-yellow-400 transition-colors p-1"
+          aria-label="Cart">
+          <LuShoppingCart size={26} />
+          {cartCount > 0 && (
+            <span className="absolute -top-1 -right-2 bg-yellow-400 text-blue-950 text-[10px] font-black min-w-[18px] h-[18px] flex items-center justify-center rounded-full px-1 leading-none">
+              {cartCount}
+            </span>
+          )}
+          <span className="text-[10px] font-bold mt-0.5 hidden md:block">Cart</span>
+        </button>
 
-            {/* Mobile hamburger */}
-            <button
-              onClick={() => setDrawerOpen(!drawerOpen)}
-              className="md:hidden shrink-0 text-white hover:text-yellow-400 transition-colors p-1"
-              aria-label="Toggle menu">
-              {drawerOpen ? <LuX size={24} /> : <LuMenu size={24} />}
-            </button>
-          </div>
-        </>
-      )}
+        {/* Hamburger — mobile only */}
+        <button
+          onClick={() => setDrawerOpen(!drawerOpen)}
+          className="md:hidden shrink-0 text-white hover:text-yellow-400 transition-colors p-1"
+          aria-label="Toggle menu">
+          {drawerOpen ? <LuX size={24} /> : <LuMenu size={24} />}
+        </button>
+      </div>
 
-      {/* ══ DESKTOP NAV BAR — home only ══════════════════ */}
+      {/* ══ DESKTOP NAV LINKS — home only ════════════════ */}
       {isHome && (
         <div className="hidden md:block bg-blue-950">
           <div className="container mx-auto px-4 flex items-center justify-center">
@@ -216,6 +137,20 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
+          {/* Contacts chini ya drawer */}
+          <div className="border-t border-blue-800 px-6 py-4 flex flex-col gap-3">
+            <a href="tel:+255696408701"
+              className="flex items-center gap-2 text-sm text-white hover:text-yellow-400 transition-colors">
+              <FaPhoneAlt size={13} className="text-yellow-400" />
+              Need help? Call us: +255 696 408 701
+            </a>
+            <a href="https://wa.me/255773753292" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-white hover:text-green-300 transition-colors">
+              <IoLogoWhatsapp size={15} className="text-green-400" />
+              WhatsApp: +255 773 753 292
+            </a>
+          </div>
         </div>
       )}
 

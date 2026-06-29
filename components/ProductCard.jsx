@@ -90,7 +90,7 @@ export default function ProductCard({ id, title, price, category, image, descrip
 
         <button
           onClick={handleAddToCart}
-          className="w-full mt-3 bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-600 text-gray-900 font-bold text-sm px-4 py-2 rounded-md transition-colors duration-200"
+          className="w-full mt-3 bg-yellow-400 hover:bg-blue-600 hover:text-white active:bg-yellow-600 text-gray-900 font-bold text-sm px-4 py-2 rounded-md transition-colors duration-200"
         >
           Add to Cart
         </button>
