@@ -69,7 +69,7 @@ function CarouselCard({ product }) {
           <div className="mt-auto">
             <button
               onClick={handleAddToCart}
-              className="w-full font-bold text-sm px-4 py-2 rounded-md transition-all duration-200 active:scale-95 bg-blue-950 hover:bg-blue-950 text-white"
+              className="w-full font-bold text-sm px-4 py-2 rounded-md transition-all duration-200 active:scale-95 bg-blue-950 hover:bg-blue-600 text-white"
             >
               Add to Cart
             </button>

@@ -40,12 +40,12 @@ export const menProducts = [
 export const shoesProducts = [
   { id: 300, title: "Headphones", price: "TZS 60,000", category: "electronics", image: "/Images/Shoes/.jpg", description: "Bass nzito sana." },
   { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-2.png", description: "Shati ya hariri nzuri." },
-   { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-3.png", description: "Shati ya hariri nzuri." },
-    { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-4.webp", description: "Shati ya hariri nzuri." },
-     { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-5.png", description: "Shati ya hariri nzuri." },
-      { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-6.png", description: "Shati ya hariri nzuri." },
-       { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-7.png", description: "Shati ya hariri nzuri." },
-        { id: 301, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-8.png", description: "Shati ya hariri nzuri." },
+   { id: 302, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-3.png", description: "Shati ya hariri nzuri." },
+    { id: 303, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-4.webp", description: "Shati ya hariri nzuri." },
+     { id: 304, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-5.png", description: "Shati ya hariri nzuri." },
+      { id: 305, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-6.png", description: "Shati ya hariri nzuri." },
+       { id: 306, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-7.png", description: "Shati ya hariri nzuri." },
+        { id: 307, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/Images/Shoes/Shoes-8.png", description: "Shati ya hariri nzuri." },
  
   
 ];
@@ -58,9 +58,9 @@ export const childrenProducts = [
   { id: 404, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
   { id: 405, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
   { id: 406, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
-  { id: 4017, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
+  { id: 407, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
 ];
-export const newArrival = [
+ export const newArrival = [
   { id: 400, title: "Nguo za Watoto", price: "TZS 20,000", category: "children", image: "/images/Men/shirt-1.jpg", description: "Nguo laini kwa watoto." },
   { id: 401, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
   { id: 402, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
@@ -68,5 +68,5 @@ export const newArrival = [
   { id: 404, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
   { id: 405, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
   { id: 406, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
-  { id: 4017, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
+  { id: 407, title: "Shati ya Silk", price: "TZS 45,000", category: "men", image: "/images/men/shati-silk.jpg", description: "Shati ya hariri nzuri." },
 ];
